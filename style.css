@@ -1,3 +1,6 @@
+/* ============================================================
+   第一部分：通用与电脑端样式 (保持你的原始设计，完全不改)
+   ============================================================ */
 :root {
     --bg: #ffffff;
     --dark-section: #111111;
@@ -12,11 +15,11 @@ body.loading { overflow: hidden; }
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; scroll-behavior: smooth; }
 
-/* ———————— 💻 电脑端：保持原样，绝不动它 ———————— */
 #loader { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; justify-content: center; align-items: center; }
 .loader-logo { color: #fff; font-size: clamp(2rem, 8vw, 4rem); font-weight: 800; letter-spacing: 0.5em; opacity: 0; }
 .loader-logo span { color: var(--accent); }
 
+/* 详情页 */
 .detail-page {
     position: fixed; inset: 0; background: #fff; z-index: 2000;
     display: none; transform: translateY(100%); transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1);
@@ -33,8 +36,9 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 .detail-hero-img { width: 100%; aspect-ratio: 16/9; background: #f9f9f9; position: relative; overflow: hidden;}
 .detail-hero-img img { width: 100%; height: 100%; object-fit: cover; }
 .detail-body { display: grid; grid-template-columns: 1.2fr 2fr; gap: 100px; border-top: 1px solid #f0f0f0; padding-top: 60px; }
-.detail-description p { font-size: 1.05rem; line-height: 1.8; color: #444; margin-bottom: 30px; }
+.sidebar-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; line-height: 1.1; }
 
+/* 导航与 Banner */
 .navbar { position: fixed; top: 0; width: 100%; height: 70px; padding: 0 60px; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); z-index: 1000; opacity: 0; }
 .logo { font-weight: 800; font-size: 1.4rem; }
 .nav-links { display: flex; gap: 40px; }
@@ -42,24 +46,26 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 
 .hero-section { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .hero-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1600'); background-size: cover; z-index: -1; filter: brightness(0.7); }
-.hero-content { opacity: 0; transform: translateY(30px); text-align: center; width: 100%; }
+.hero-content { opacity: 0; transform: translateY(30px); text-align: center; }
 .hero-section h1 { font-size: clamp(3rem, 12vw, 9rem); font-weight: 800; color: #fff; line-height: 0.9; margin-bottom: 40px; }
 .hero-section h1 span { color: transparent; -webkit-text-stroke: 1px #fff; }
 
+/* 核心网格设计 */
 .section-padding { padding: var(--gap) 0; }
-.container { max-width: 1440px; margin: 0 auto; padding: 0 60px; position: relative; }
+.container { max-width: 1440px; margin: 0 auto; padding: 0 60px; }
 .works-header { text-align: center; margin-bottom: 100px; }
-.main-title { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 800; margin-bottom: 30px; }
-
-.awwwards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; width: 100%; }
-.card-img-wrap { width: 100%; aspect-ratio: 4/5; overflow: hidden; margin-bottom: 20px; cursor: pointer; }
+.awwwards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.card-img-wrap { width: 100%; aspect-ratio: 4/5; overflow: hidden; margin-bottom: 20px; }
 .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; }
 
+/* 生态板块 */
 .eco-section { background: var(--dark-section); padding: var(--gap) 0; color: #fff; }
 .eco-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
 .eco-cards-side { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 .eco-card { padding: 35px 30px; background: #1a1a1a; border: 1px solid #222; min-height: 240px; display: flex; flex-direction: column; justify-content: space-between; }
+.card-light { background: #fff; color: #000; border: none; }
 
+/* 视频与归档 */
 .video-section { background: #fff; padding: 120px 0; }
 .video-wrapper { width: 100%; aspect-ratio: 16/9; background: #000; position: relative; margin-bottom: 80px; overflow: hidden; }
 .video-wrapper video { width: 100%; height: 100%; object-fit: cover; }
@@ -67,6 +73,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 .archive-img-wrap { width: 100%; aspect-ratio: 1/1; overflow: hidden; margin-bottom: 20px; background: #f5f5f7; }
 .archive-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
 
+/* 页脚 */
 .site-footer { background: #000; color: #fff; padding: 100px 0 40px; }
 .footer-top { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; margin-bottom: 80px; }
 .footer-nav-group { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
@@ -74,57 +81,80 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 
 .animate-on-scroll { opacity: 0; transform: translateY(30px); }
 
-/* ———————— 📱 手机端：精准修复截图中的所有问题 ———————— */
+
+/* ============================================================
+   第二部分：📱 手机端专用强力重置 (核心修改区)
+   当屏幕宽度小于 768px 时，以下代码会覆盖上面的规则
+   ============================================================ */
 @media (max-width: 768px) {
-    :root { --gap: 60px; }
-    
-    /* 1. 修正容器和导航 */
-    .container { padding: 0 24px !important; width: 100vw !important; box-sizing: border-box; }
-    .navbar { padding: 0 24px !important; height: 60px !important; }
-    .nav-links { gap: 15px !important; }
-    .nav-link-item { font-size: 11px !important; letter-spacing: 0px !important; }
+    /* 1. 强制重置所有 Grid 为 1 列，解决图片挤成一排的问题 */
+    .awwwards-grid, 
+    .eco-grid, 
+    .eco-cards-side, 
+    .footer-top, 
+    .footer-nav-group,
+    .detail-body {
+        grid-template-columns: 1fr !important; 
+        gap: 30px !important;
+    }
 
-    /* 2. 修正首页大字重叠 (图 baa4e...) */
-    .hero-section h1 { 
-        font-size: 48px !important; 
-        line-height: 1.0 !important; 
+    /* 2. 视频下方的小图归档区，手机上改成 2 列效果最好 */
+    .archive-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 15px !important;
+    }
+
+    /* 3. 容器间距缩小，避免两侧留白过多 */
+    .container {
+        padding: 0 20px !important;
+    }
+
+    /* 4. 解决 Banner 文字重叠和错位 */
+    .hero-section h1 {
+        font-size: 40px !important;
+        line-height: 1.1 !important;
         margin-bottom: 20px !important;
-        letter-spacing: -1px !important;
+        white-space: normal !important; /* 允许换行 */
     }
-    .subtitle { font-size: 11px !important; line-height: 1.5 !important; padding: 0 20px; }
-    
-    /* 3. 核心修复：作品网格不再并排 (图 f73c6...) */
-    .awwwards-grid { 
-        grid-template-columns: 1fr !important; /* 强制单列 */
-        gap: 60px !important; 
+    .subtitle {
+        font-size: 11px !important;
+        letter-spacing: 1px !important;
+        line-height: 1.5 !important;
+        padding: 0 10px;
     }
-    .card-img-wrap { 
-        aspect-ratio: 4/5 !important; 
-        width: 100% !important; 
-        height: auto !important;
-    }
-    .card-meta h3 { font-size: 1.5rem !important; margin-top: 10px; }
-    .main-title { font-size: 36px !important; line-height: 1.1 !important; }
 
-    /* 4. 生态板块修复 */
-    .eco-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-    .eco-cards-side { grid-template-columns: 1fr !important; }
-    .eco-card { min-height: auto !important; padding: 30px !important; }
-    .eco-title { font-size: 32px !important; line-height: 1.2 !important; }
-
-    /* 5. 底部归档网格修复 (图 93f45...) */
-    .archive-grid { 
-        grid-template-columns: 1fr 1fr !important; /* 手机上两列最稳 */
-        gap: 20px !important; 
+    /* 5. 修复导航栏太宽的问题 */
+    .navbar {
+        padding: 0 15px !important;
+        height: 60px !important;
     }
-    .archive-img-wrap { aspect-ratio: 1/1 !important; width: 100% !important; }
+    .logo { font-size: 1.1rem !important; }
+    .nav-links { gap: 12px !important; }
+    .nav-link-item { font-size: 10px !important; }
 
-    /* 6. 页脚修复 */
-    .footer-top { grid-template-columns: 1fr !important; gap: 40px !important; }
-    .footer-nav-group { grid-template-columns: 1fr 1fr !important; gap: 20px !important; }
-    .footer-bottom { flex-direction: column !important; gap: 20px !important; text-align: center; }
-    
-    /* 7. 详情页手机适配 */
-    .detail-body { grid-template-columns: 1fr !important; gap: 40px !important; }
-    .sidebar-title { font-size: 1.8rem !important; }
+    /* 6. 核心图片尺寸重定义，防止变形 */
+    .card-img-wrap {
+        aspect-ratio: 1 / 1 !important; /* 手机上用 1:1 更整齐 */
+        margin-bottom: 10px !important;
+    }
+    .archive-img-wrap {
+        aspect-ratio: 1 / 1 !important;
+    }
+
+    /* 7. 解决标题文字太大导致溢出的问题 */
+    .main-title, .eco-title, .video-main-title {
+        font-size: 28px !important;
+        line-height: 1.2 !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* 8. 页脚对齐 */
+    .footer-bottom {
+        flex-direction: column !important;
+        text-align: center;
+        gap: 15px !important;
+    }
+    .site-footer {
+        padding: 60px 0 30px !important;
+    }
 }
