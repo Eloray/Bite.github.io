@@ -1,6 +1,3 @@
-/* ============================================================
-   第一部分：通用与电脑端样式 (保持你的原始设计，完全不改)
-   ============================================================ */
 :root {
     --bg: #ffffff;
     --dark-section: #111111;
@@ -8,153 +5,231 @@
     --secondary: #999999;
     --accent: #0071e3;
     --radius: 0px; 
-    --gap: 120px;
+    --gap: 180px;
 }
 
 body.loading { overflow: hidden; }
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; scroll-behavior: smooth; }
 
+/* 开场动画 */
 #loader { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; justify-content: center; align-items: center; }
 .loader-logo { color: #fff; font-size: clamp(2rem, 8vw, 4rem); font-weight: 800; letter-spacing: 0.5em; opacity: 0; }
 .loader-logo span { color: var(--accent); }
 
-/* 详情页 */
+/* --- 优化后的详情页：舒展布局 --- */
 .detail-page {
     position: fixed; inset: 0; background: #fff; z-index: 2000;
     display: none; transform: translateY(100%); transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1);
 }
 .detail-page.active { display: block; transform: translateY(0); }
 .detail-nav {
-    position: absolute; top: 0; width: 100%; height: 70px; padding: 0 20px;
+    position: absolute; top: 0; width: 100%; height: 90px; padding: 0 60px;
     display: flex; justify-content: space-between; align-items: center;
     background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); z-index: 2010;
 }
-.back-btn { font-size: 0.65rem; font-weight: 800; cursor: pointer; letter-spacing: 2px; border: 1px solid #eee; padding: 8px 15px; }
-.detail-scroll-wrapper { width: 100%; height: 100%; overflow-y: auto; padding-top: 80px; }
-.detail-content { max-width: 1400px; margin: 0 auto; padding: 20px 20px 80px; }
-.detail-hero-img { width: 100%; aspect-ratio: 16/9; background: #f9f9f9; position: relative; overflow: hidden;}
-.detail-hero-img img { width: 100%; height: 100%; object-fit: cover; }
-.detail-body { display: grid; grid-template-columns: 1.2fr 2fr; gap: 100px; border-top: 1px solid #f0f0f0; padding-top: 60px; }
-.sidebar-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; line-height: 1.1; }
+.back-btn { font-size: 0.65rem; font-weight: 800; cursor: pointer; letter-spacing: 2px; border: 1px solid #eee; padding: 10px 20px; border-radius: 0; transition: 0.3s; }
+.back-btn:hover { background: #000; color: #fff; border-color: #000; }
 
-/* 导航与 Banner */
-.navbar { position: fixed; top: 0; width: 100%; height: 70px; padding: 0 60px; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); z-index: 1000; opacity: 0; }
+.detail-scroll-wrapper { width: 100%; height: 100%; overflow-y: auto; padding-top: 100px; cursor: zoom-out; }
+.detail-content { max-width: 1400px; margin: 0 auto; padding: 40px 60px 100px; cursor: default; }
+
+/* 英雄图区域：现在直接作为页头 */
+.detail-hero-section { margin-bottom: 80px; width: 100%; }
+.detail-hero-img { 
+    width: 100%; aspect-ratio: 16/7; /* 更加宽阔的画幅 */
+    border-radius: 0; overflow: hidden; 
+    box-shadow: 0 40px 120px rgba(0,0,0,0.05); background: #f9f9f9; position: relative;
+}
+.detail-hero-img img { width: 100%; height: 100%; object-fit: cover; }
+.img-caption { position: absolute; bottom: 30px; left: 30px; font-size: 0.6rem; color: #fff; opacity: 0.6; font-weight: 700; letter-spacing: 2px; }
+
+/* 详情正文：加大左右距离 */
+.detail-body { 
+    display: grid; 
+    grid-template-columns: 1.2fr 2fr; /* 拉开比例，给右侧更多空间 */
+    gap: 150px; /* 极大的间距，展现舒展感 */
+    border-top: 1px solid #f0f0f0; 
+    padding-top: 80px; 
+}
+
+.detail-meta-sidebar { display: flex; flex-direction: column; gap: 40px; }
+.sidebar-title { 
+    font-size: 2.5rem; 
+    font-weight: 800; 
+    letter-spacing: -1.5px; 
+    margin-bottom: 20px; 
+    line-height: 1;
+}
+.meta-item h4 { font-size: 0.65rem; font-weight: 800; color: #bbb; margin-bottom: 12px; letter-spacing: 1px; }
+.meta-item p { font-size: 0.9rem; font-weight: 600; color: #000; }
+
+.detail-description { max-width: 800px; }
+.detail-description p { font-size: 1.15rem; line-height: 1.8; color: #444; margin-bottom: 40px; text-align: justify; }
+.secondary-desc { font-size: 1rem !important; color: #999 !important; }
+
+/* 导航 */
+.navbar { position: fixed; top: 0; width: 100%; height: 90px; padding: 0 60px; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); z-index: 1000; opacity: 0; }
 .logo { font-weight: 800; font-size: 1.4rem; }
 .nav-links { display: flex; gap: 40px; }
 .nav-link-item { text-decoration: none; color: var(--text); font-size: 0.75rem; font-weight: 600; }
 
+/* Banner */
 .hero-section { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .hero-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1600'); background-size: cover; z-index: -1; filter: brightness(0.7); }
 .hero-content { opacity: 0; transform: translateY(30px); text-align: center; }
-.hero-section h1 { font-size: clamp(3rem, 12vw, 9rem); font-weight: 800; color: #fff; line-height: 0.9; margin-bottom: 40px; }
+.hero-section h1 { font-size: clamp(3.5rem, 12vw, 9rem); font-weight: 800; color: #fff; line-height: 0.9; margin-bottom: 40px; }
 .hero-section h1 span { color: transparent; -webkit-text-stroke: 1px #fff; }
 
-/* 核心网格设计 */
+/* 作品网格 */
 .section-padding { padding: var(--gap) 0; }
 .container { max-width: 1440px; margin: 0 auto; padding: 0 60px; }
 .works-header { text-align: center; margin-bottom: 100px; }
+.main-title { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 800; margin-bottom: 30px; }
 .awwwards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-.card-img-wrap { width: 100%; aspect-ratio: 4/5; overflow: hidden; margin-bottom: 20px; }
+.card-img-wrap { width: 100%; aspect-ratio: 4/5; border-radius: 0; overflow: hidden; margin-bottom: 20px; cursor: pointer; }
 .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; }
+.work-card:hover img { transform: scale(1.05); }
 
-/* 生态板块 */
+.card-meta p { color: #999999; font-size: 0.9rem; font-weight: 400; }
+.card-meta h3 { font-size: 1.2rem; margin-bottom: 5px; font-weight: 700; }
+
+/* 创意生态板块 */
 .eco-section { background: var(--dark-section); padding: var(--gap) 0; color: #fff; }
 .eco-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
+.eco-tag { color: var(--accent); font-weight: 700; letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 30px; display: block; }
+.eco-title { font-size: clamp(2rem, 4.5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 30px; }
+.eco-title span { background: linear-gradient(90deg, #fff, #555); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.eco-desc { font-size: 1.1rem; color: #888; margin-bottom: 40px; line-height: 1.6; max-width: 480px; }
+.eco-btn { color: #fff; text-decoration: none; font-weight: 600; border-bottom: 1px solid #333; padding-bottom: 10px; transition: 0.3s; font-size: 0.9rem;}
 .eco-cards-side { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-.eco-card { padding: 35px 30px; background: #1a1a1a; border: 1px solid #222; min-height: 240px; display: flex; flex-direction: column; justify-content: space-between; }
-.card-light { background: #fff; color: #000; border: none; }
+.eco-card { padding: 35px 30px; border-radius: 0; transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; min-height: 240px; display: flex; flex-direction: column; justify-content: space-between; }
+.card-head { display: flex; justify-content: space-between; font-size: 1.3rem; color: var(--accent); margin-bottom: 20px;}
+.card-head span { font-size: 0.7rem; color: #444; font-weight: 700; }
+.eco-card h3 { font-size: 1.35rem; margin-bottom: 15px; letter-spacing: -0.5px; }
+.eco-card p { color: #888; font-size: 0.85rem; line-height: 1.5; }
+.card-dark { background: #1a1a1a; border: 1px solid #222; }
+.card-light { background: #fff; color: #000; }
+.eco-card:hover { transform: translateY(-10px); background: var(--accent); color: #fff; }
 
 /* 视频与归档 */
-.video-section { background: #fff; padding: 120px 0; }
-.video-wrapper { width: 100%; aspect-ratio: 16/9; background: #000; position: relative; margin-bottom: 80px; overflow: hidden; }
+.video-section { background: #ffffff; padding: 120px 0 160px; }
+.video-header { text-align: center; margin-bottom: 60px; }
+.video-main-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 15px; }
+.video-main-title span { color: var(--accent); }
+.video-container { width: 100%; position: relative; margin-bottom: 80px; }
+.video-wrapper { width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 0; overflow: hidden; position: relative; }
 .video-wrapper video { width: 100%; height: 100%; object-fit: cover; }
+.video-overlay { position: absolute; bottom: 40px; left: 40px; color: #fff; font-size: 0.75rem; font-weight: 800; letter-spacing: 2px; background: rgba(0,0,0,0.3); padding: 8px 16px; backdrop-filter: blur(10px); border-radius: 0; }
 .archive-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
-.archive-img-wrap { width: 100%; aspect-ratio: 1/1; overflow: hidden; margin-bottom: 20px; background: #f5f5f7; }
-.archive-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.archive-card { cursor: pointer; }
+.archive-img-wrap { width: 100%; aspect-ratio: 1/1; border-radius: 0; overflow: hidden; margin-bottom: 20px; background: #f5f5f7; }
+.archive-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+.archive-card:hover img { transform: scale(1.1); }
+.archive-meta span { font-size: 0.65rem; font-weight: 800; color: var(--accent); letter-spacing: 1px; display: block; margin-bottom: 8px; }
+.archive-meta h4 { font-size: 1.1rem; font-weight: 700; color: #000; }
 
 /* 页脚 */
-.site-footer { background: #000; color: #fff; padding: 100px 0 40px; }
+.site-footer { background: #000; color: #fff; padding: 100px 0 40px; border-radius: 0; }
 .footer-top { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; margin-bottom: 80px; }
 .footer-nav-group { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-.footer-bottom { border-top: 1px solid #222; padding-top: 40px; display: flex; justify-content: space-between; }
+.footer-label { font-size: 0.65rem; font-weight: 800; color: #555; letter-spacing: 2px; display: block; margin-bottom: 25px; }
+.footer-col a, .footer-col p { display: block; color: #fff; text-decoration: none; font-size: 0.9rem; margin-bottom: 12px; }
+.footer-bottom { border-top: 1px solid #222; padding-top: 40px; display: flex; justify-content: space-between; font-size: 0.7rem; color: #555; }
+#back-to-top-link { color: var(--accent) !important; text-decoration: none; display: flex; align-items: center; gap: 10px; font-weight: 800; }
 
 .animate-on-scroll { opacity: 0; transform: translateY(30px); }
 
-
-/* ============================================================
-   第二部分：📱 手机端专用强力重置 (核心修改区)
-   当屏幕宽度小于 768px 时，以下代码会覆盖上面的规则
-   ============================================================ */
+@media (max-width: 1024px) {
+    .detail-body { grid-template-columns: 1fr; gap: 60px; }
+    .eco-grid { grid-template-columns: 1fr; gap: 50px; }
+    .eco-cards-side { grid-template-columns: 1fr; }
+    .archive-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-top { grid-template-columns: 1fr; gap: 60px; }
+}
+/* --- 专门针对手机端的修复与优化 (不影响电脑端) --- */
 @media (max-width: 768px) {
-    /* 1. 强制重置所有 Grid 为 1 列，解决图片挤成一排的问题 */
-    .awwwards-grid, 
-    .eco-grid, 
-    .eco-cards-side, 
-    .footer-top, 
-    .footer-nav-group,
-    .detail-body {
-        grid-template-columns: 1fr !important; 
-        gap: 30px !important;
+    /* 全局间距调整 */
+    :root {
+        --gap: 80px; /* 缩小手机端的模块间距 */
     }
 
-    /* 2. 视频下方的小图归档区，手机上改成 2 列效果最好 */
-    .archive-grid {
-        grid-template-columns: 1fr 1fr !important;
-        gap: 15px !important;
-    }
-
-    /* 3. 容器间距缩小，避免两侧留白过多 */
     .container {
-        padding: 0 20px !important;
+        padding: 0 25px; /* 缩小手机端左右内边距 */
     }
 
-    /* 4. 解决 Banner 文字重叠和错位 */
-    .hero-section h1 {
-        font-size: 40px !important;
-        line-height: 1.1 !important;
-        margin-bottom: 20px !important;
-        white-space: normal !important; /* 允许换行 */
-    }
-    .subtitle {
-        font-size: 11px !important;
-        letter-spacing: 1px !important;
-        line-height: 1.5 !important;
-        padding: 0 10px;
-    }
-
-    /* 5. 修复导航栏太宽的问题 */
+    /* 导航栏优化 */
     .navbar {
-        padding: 0 15px !important;
-        height: 60px !important;
+        height: 70px;
+        padding: 0 25px;
     }
-    .logo { font-size: 1.1rem !important; }
-    .nav-links { gap: 12px !important; }
-    .nav-link-item { font-size: 10px !important; }
-
-    /* 6. 核心图片尺寸重定义，防止变形 */
-    .card-img-wrap {
-        aspect-ratio: 1 / 1 !important; /* 手机上用 1:1 更整齐 */
-        margin-bottom: 10px !important;
+    .nav-links {
+        gap: 15px; /* 缩小菜单间距 */
     }
-    .archive-img-wrap {
-        aspect-ratio: 1 / 1 !important;
+    .nav-link-item {
+        font-size: 0.65rem;
     }
 
-    /* 7. 解决标题文字太大导致溢出的问题 */
-    .main-title, .eco-title, .video-main-title {
-        font-size: 28px !important;
-        line-height: 1.2 !important;
-        margin-bottom: 20px !important;
+    /* 核心：解决作品网格挤成一行的问题 */
+    .awwwards-grid {
+        grid-template-columns: 1fr; /* 强制手机端图片垂直排列，不再挤在一起 */
+        gap: 30px;
+    }
+    
+    .archive-grid {
+        grid-template-columns: 1fr; /* 视频下方的归档作品也改为单列 */
+        gap: 40px;
     }
 
-    /* 8. 页脚对齐 */
-    .footer-bottom {
-        flex-direction: column !important;
-        text-align: center;
-        gap: 15px !important;
+    /* 详情页（弹窗）手机端适配 */
+    .detail-nav {
+        height: 70px;
+        padding: 0 20px;
     }
-    .site-footer {
-        padding: 60px 0 30px !important;
+    .detail-content {
+        padding: 20px 25px 60px;
+    }
+    .detail-hero-section {
+        margin-bottom: 40px;
+    }
+    .detail-hero-img {
+        aspect-ratio: 4/3; /* 手机端使用更适合垂直屏的比例 */
+    }
+    .detail-body {
+        grid-template-columns: 1fr; /* 侧边栏和内容垂直排列 */
+        gap: 40px;
+        padding-top: 40px;
+    }
+    .sidebar-title {
+        font-size: 1.8rem;
+    }
+
+    /* 创意生态板块适配 */
+    .eco-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .eco-cards-side {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .eco-card {
+        min-height: auto;
+        padding: 30px;
+    }
+
+    /* 英雄位文字适配 */
+    .hero-section h1 {
+        font-size: 3rem;
+        line-height: 1.1;
+    }
+
+    /* 页脚适配 */
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .footer-nav-group {
+        grid-template-columns: 1fr 1fr; /* 页脚链接改为两列 */
     }
 }
