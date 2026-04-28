@@ -38,97 +38,108 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 
 .detail-body { display: grid; grid-template-columns: 1.2fr 2fr; gap: 100px; border-top: 1px solid #f0f0f0; padding-top: 60px; }
 .detail-meta-sidebar { display: flex; flex-direction: column; gap: 30px; }
-.sidebar-title { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; margin-bottom: 10px; line-height: 1; }
+.sidebar-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; line-height: 1.1; }
 .meta-item h4 { font-size: 0.6rem; color: #bbb; margin-bottom: 8px; letter-spacing: 1px; }
 .meta-item p { font-size: 0.85rem; font-weight: 600; }
-.detail-description p { font-size: 1.05rem; line-height: 1.7; color: #444; margin-bottom: 30px; }
+.detail-description p { font-size: 1.05rem; line-height: 1.8; color: #444; margin-bottom: 30px; }
 
 /* 导航 */
-.navbar { position: fixed; top: 0; width: 100%; height: 70px; padding: 0 30px; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); z-index: 1000; opacity: 0; }
-.logo { font-weight: 800; font-size: 1.2rem; }
-.nav-links { display: flex; gap: 20px; }
-.nav-link-item { text-decoration: none; color: var(--text); font-size: 0.65rem; font-weight: 700; }
+.navbar { position: fixed; top: 0; width: 100%; height: 70px; padding: 0 60px; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); z-index: 1000; opacity: 0; }
+.logo { font-weight: 800; font-size: 1.4rem; }
+.nav-links { display: flex; gap: 40px; }
+.nav-link-item { text-decoration: none; color: var(--text); font-size: 0.75rem; font-weight: 600; }
 
 /* Banner */
 .hero-section { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .hero-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1600'); background-size: cover; z-index: -1; filter: brightness(0.7); }
-.hero-content { opacity: 0; transform: translateY(30px); text-align: center; padding: 0 20px;}
-.hero-section h1 { font-size: clamp(2.5rem, 10vw, 8rem); font-weight: 800; color: #fff; line-height: 0.9; margin-bottom: 20px; }
+.hero-content { opacity: 0; transform: translateY(30px); text-align: center; }
+.hero-section h1 { font-size: clamp(3rem, 12vw, 9rem); font-weight: 800; color: #fff; line-height: 0.9; margin-bottom: 40px; }
 .hero-section h1 span { color: transparent; -webkit-text-stroke: 1px #fff; }
-.subtitle { font-size: 0.7rem; color: #ccc; letter-spacing: 2px; }
+.subtitle { font-size: 0.8rem; color: #ccc; letter-spacing: 2px; }
 
 /* 作品网格 */
 .section-padding { padding: var(--gap) 0; }
-.container { max-width: 1440px; margin: 0 auto; padding: 0 40px; }
-.works-header { text-align: center; margin-bottom: 60px; }
-.main-title { font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; margin-bottom: 20px; }
-.awwwards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-.card-img-wrap { width: 100%; aspect-ratio: 4/5; overflow: hidden; margin-bottom: 15px; cursor: pointer; }
+.container { max-width: 1440px; margin: 0 auto; padding: 0 60px; }
+.works-header { text-align: center; margin-bottom: 100px; }
+.main-title { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 800; margin-bottom: 30px; }
+
+.awwwards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.work-card { width: 100%; }
+.card-img-wrap { width: 100%; aspect-ratio: 4/5; overflow: hidden; margin-bottom: 20px; cursor: pointer; }
 .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; }
-.card-meta p { color: #999999; font-size: 0.8rem; }
-.card-meta h3 { font-size: 1.1rem; margin-bottom: 5px; font-weight: 700; }
+.card-meta p { color: #999999; font-size: 0.9rem; margin-top: 5px; }
+.card-meta h3 { font-size: 1.2rem; font-weight: 700; line-height: 1.2; }
 
 /* 创意生态板块 */
 .eco-section { background: var(--dark-section); padding: var(--gap) 0; color: #fff; }
-.eco-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
-.eco-tag { color: var(--accent); font-weight: 700; letter-spacing: 3px; font-size: 0.65rem; margin-bottom: 20px; display: block; }
-.eco-title { font-size: clamp(1.8rem, 4vw, 3.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 25px; }
+.eco-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
+.eco-tag { color: var(--accent); font-weight: 700; letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 30px; display: block; }
+.eco-title { font-size: clamp(2rem, 4.5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 30px; }
 .eco-title span { background: linear-gradient(90deg, #fff, #555); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.eco-desc { font-size: 1rem; color: #888; margin-bottom: 30px; line-height: 1.6; max-width: 450px; }
-.eco-btn { color: #fff; text-decoration: none; font-weight: 600; border-bottom: 1px solid #333; padding-bottom: 8px; font-size: 0.8rem;}
+.eco-desc { font-size: 1.1rem; color: #888; margin-bottom: 40px; line-height: 1.6; max-width: 480px; }
+.eco-btn { color: #fff; text-decoration: none; font-weight: 600; border-bottom: 1px solid #333; padding-bottom: 10px; font-size: 0.9rem;}
 
 .eco-cards-side { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-.eco-card { padding: 30px; background: #1a1a1a; border: 1px solid #222; transition: 0.5s; min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; }
+.eco-card { padding: 35px 30px; background: #1a1a1a; border: 1px solid #222; transition: 0.5s; min-height: 240px; display: flex; flex-direction: column; justify-content: space-between; }
 .card-light { background: #fff; color: #000; border: none; }
-.card-head { display: flex; justify-content: space-between; color: var(--accent); margin-bottom: 15px;}
-.eco-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
-.eco-card p { color: #888; font-size: 0.8rem; line-height: 1.5; }
+.card-head { display: flex; justify-content: space-between; color: var(--accent); margin-bottom: 20px;}
+.eco-card h3 { font-size: 1.35rem; margin-bottom: 15px; line-height: 1.3; }
+.eco-card p { color: #888; font-size: 0.85rem; line-height: 1.6; }
 
-/* 视频板块 */
-.video-section { background: #fff; padding: 100px 0; }
-.video-main-title { font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 800; text-align: center; margin-bottom: 40px; }
-.video-wrapper { width: 100%; aspect-ratio: 16/9; background: #000; position: relative; margin-bottom: 60px; overflow: hidden;}
+/* 视频与归档 */
+.video-section { background: #fff; padding: 120px 0; }
+.video-main-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-align: center; margin-bottom: 60px; }
+.video-wrapper { width: 100%; aspect-ratio: 16/9; background: #000; position: relative; margin-bottom: 80px; overflow: hidden; }
 .video-wrapper video { width: 100%; height: 100%; object-fit: cover; }
-.archive-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.archive-img-wrap { aspect-ratio: 1/1; overflow: hidden; margin-bottom: 15px; background: #f5f5f7; }
+.archive-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+.archive-img-wrap { width: 100%; aspect-ratio: 1/1; overflow: hidden; margin-bottom: 20px; background: #f5f5f7; }
 .archive-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
-.archive-meta h4 { font-size: 0.95rem; }
+.archive-meta h4 { font-size: 1.1rem; font-weight: 700; line-height: 1.2; }
 
 /* 页脚 */
-.site-footer { background: #000; color: #fff; padding: 80px 0 30px; }
-.footer-top { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; margin-bottom: 60px; }
-.footer-nav-group { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.footer-label { font-size: 0.6rem; color: #555; margin-bottom: 15px; display: block; }
-.footer-col a, .footer-col p { color: #fff; text-decoration: none; font-size: 0.8rem; margin-bottom: 10px; display: block;}
-.footer-bottom { border-top: 1px solid #222; padding-top: 30px; display: flex; justify-content: space-between; font-size: 0.65rem; color: #555; }
+.site-footer { background: #000; color: #fff; padding: 100px 0 40px; }
+.footer-top { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; margin-bottom: 80px; }
+.footer-nav-group { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.footer-label { font-size: 0.65rem; color: #555; margin-bottom: 25px; display: block; }
+.footer-col a, .footer-col p { color: #fff; text-decoration: none; font-size: 0.9rem; margin-bottom: 12px; display: block;}
+.footer-bottom { border-top: 1px solid #222; padding-top: 40px; display: flex; justify-content: space-between; font-size: 0.7rem; color: #555; }
 
-.animate-on-scroll { opacity: 0; transform: translateY(20px); }
+.animate-on-scroll { opacity: 0; transform: translateY(30px); }
 
-/* ———————— 响应式核心修改 (手机端) ———————— */
+/* ———————— 响应式核心修复：手机端 (修复重叠和尺寸不一) ———————— */
 @media (max-width: 768px) {
-    :root { --gap: 80px; }
-    .container { padding: 0 25px; }
+    :root { --gap: 60px; }
+    .container { padding: 0 24px; }
     
-    /* 导航缩小 */
-    .navbar { padding: 0 20px; height: 60px; }
+    .navbar { padding: 0 24px; height: 60px; }
+    .logo { font-size: 1.1rem; }
+    .nav-links { gap: 15px; }
+
+    /* 修复文字重叠：增加行高，减小字号 */
+    .hero-section h1 { font-size: 3.2rem; line-height: 1.0; margin-bottom: 20px; }
+    .main-title { font-size: 2.2rem; line-height: 1.1; }
     
-    /* 作品列表：改为 1 列 */
-    .awwwards-grid { grid-template-columns: 1fr; gap: 40px; }
+    /* 修复图片大小不一：强制 1 列并保持比例 */
+    .awwwards-grid { grid-template-columns: 1fr !important; gap: 50px; }
+    .card-img-wrap { aspect-ratio: 4/5 !important; }
+
+    /* 创意生态：改为垂直排列，增加间距 */
+    .eco-grid { grid-template-columns: 1fr !important; gap: 50px; }
+    .eco-cards-side { grid-template-columns: 1fr !important; gap: 20px; }
+    .eco-card { min-height: auto; padding: 30px; }
+    .eco-title { font-size: 2.2rem; line-height: 1.2; }
+
+    /* 详情页修复 */
+    .detail-body { grid-template-columns: 1fr !important; gap: 40px; padding-top: 40px; }
+    .detail-meta-sidebar { gap: 24px; }
+    .sidebar-title { font-size: 2rem; }
+    .detail-description p { font-size: 1rem; line-height: 1.6; }
+
+    /* 归档区修复 */
+    .archive-grid { grid-template-columns: 1fr 1fr !important; gap: 20px; }
     
-    /* 生态板块：改为上下堆叠，卡片占满 */
-    .eco-grid { grid-template-columns: 1fr; gap: 40px; }
-    .eco-cards-side { grid-template-columns: 1fr; }
-    .eco-card { min-height: auto; padding: 25px; }
-    
-    /* 详情页：间距缩小，侧边栏排在正文上方 */
-    .detail-body { grid-template-columns: 1fr; gap: 40px; padding-top: 40px; }
-    .detail-content { padding: 10px 15px 60px; }
-    
-    /* 归档视频区：改为 2 列 */
-    .archive-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-    
-    /* 页脚：改为垂直堆叠 */
-    .footer-top { grid-template-columns: 1fr; gap: 40px; }
-    .footer-nav-group { grid-template-columns: 1fr 1fr; }
+    /* 页脚修复 */
+    .footer-top { grid-template-columns: 1fr !important; gap: 50px; }
+    .footer-nav-group { grid-template-columns: 1fr 1fr !important; gap: 30px; }
     .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
 }
